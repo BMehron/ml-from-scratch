@@ -1,4 +1,18 @@
-from coding.linked_list import Node
+class Node:
+    def __init__(self, value, next=None, prev=None):
+        self.value = value
+        self.next = next
+        self.prev = prev
+
+    def __iter__(self):
+        cur_node = self
+        while cur_node:
+            yield cur_node
+            cur_node = cur_node.next
+
+    def __str__(self):
+        values = [str(x.value) for x in self]
+        return ' -> '.join(values)
 
 # Partition: Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x. 
 # If x is contained within the list, the values of x only need to be after the elements less than x (see below). The partition element x can appear anywhere in the "right partition"; 
@@ -24,8 +38,21 @@ def partition(head, partition_value):
             prev_node, cur_node = cur_node, cur_node.next
     return cur_head
 
+def partition(head: Node, partition_value: int):
+    if head is None:
+        return None
+    prev_node, cur_node = None, head
+    while cur_node is not None:
+        if cur_node.value < partition_value and prev_node is not None:
+            prev_node.next, cur_node.next = cur_node.next, head
+            head, cur_node = cur_node, prev_node.next
+        else:
+            prev_node, cur_node = cur_node, cur_node.next
+    return head
 
-from coding.linked_list import Node
+    
+
+
 head = Node(3)
 node1 = Node(9)
 node2 = Node(4)
@@ -38,7 +65,7 @@ node2.next = node3
 node3.next = node4
 
 if __name__ == "__main__":
-    new_head = partition(head, 2)
+    new_head = partition(head, 4)
     while new_head:
         print(new_head.value)
         new_head = new_head.next

@@ -61,7 +61,7 @@ class Test(unittest.TestCase):
         ("ale", "elas", False),
     ]
 
-    testable_functions = [are_one_edit_different]
+    testable_functions = [are_one_edit_different, are_one_edit]
 
     def test_one_away(self):
 

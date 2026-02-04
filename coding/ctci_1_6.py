@@ -30,24 +30,16 @@
 #     return ''.join(string_list[:end_idx])
         
 
-def compress_string(string):
+def compress_string_a(string):  
     compressed = []
-    counter = 0
-
-    for i in range(len(string)):  # noqa
-        if i != 0 and string[i] != string[i - 1]:
-            compressed.append(string[i - 1] + str(counter))
-            counter = 0
-        counter += 1
-
-    # add last repeated character
-    if counter:
-        compressed.append(string[-1] + str(counter))
-
-    # returns original string if compressed string isn't smaller
-    return min(string, "".join(compressed), key=len)
-
-
+    curr_count = 0
+    for i in range(len(string)):
+        if i != 0 and string[i] != string[i-1]:
+            compressed.append(f"{string[i-1]}{curr_count}")
+            curr_count = 0
+        curr_count += 1
+    compressed.append(f"{string[-1]}{curr_count}")
+    return min(string, ''.join(compressed), key=len)
 
 def test_function(function, tests):
     for string, answer in tests:
@@ -56,4 +48,4 @@ def test_function(function, tests):
 
 if __name__ == "__main__":
     tests = [("aabcccccaaa", "a2bc5a3"), ("ajdrtf", "ajdrtf"), ("aa", "aa")]
-    test_function(compress_string, tests)
+    test_function(compress_string_a, tests)

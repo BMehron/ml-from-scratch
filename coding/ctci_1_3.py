@@ -38,7 +38,7 @@ def urlify_my(string, length):
             char_list[i] = "%20"
     return ''.join(char_list)
 
-def urligy_python(char_list, length):
+def urlify_python(char_list, length):
     # Replace in-place "space" chars by "%20". In the char_list first lenght of characters are true ones.
     char_idx = length-1
     end_idx = len(char_list)-1
@@ -51,6 +51,18 @@ def urligy_python(char_list, length):
             end_idx -= 3
         char_idx -= 1
     return "".join(char_list[end_idx+1:])
+
+
+def urlify_python(char_list, length):
+    end_arr = len(char_list)-1
+    for i in range(length-1, -1, -1):
+        if char_list[i] != ' ':
+            char_list[end_arr] = char_list[i]
+            end_arr -= 1
+        else:
+            char_list[end_arr-2:end_arr+1] = ['%', '2', '0']
+            end_arr -= 3
+    return ''.join(char_list[end_arr+1:])
 
 
 
@@ -66,12 +78,12 @@ class Test(unittest.TestCase):
         (" a b    ", 4): "%20a%20b",
         (" a b       ", 5): "%20a%20b%20",
     }
-    testable_functions = [urlify_algo, urlify, urlify_my, urligy_python]
+    testable_functions = [urlify_algo, urlify, urlify_my, urlify_python]
 
     def test_urlify(self):
         for urlify in self.testable_functions:
             for args, expected in self.test_cases.items():
-                if urlify.__name__ != "urligy_python":
+                if urlify.__name__ != "urlify_python":
                     actual = urlify(*args)
                 else:
                     actual = urlify(list(args[0]), args[1])

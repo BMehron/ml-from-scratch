@@ -16,7 +16,6 @@ def is_unique_using_bit_vector(string):
         bit_vector |= 1 << char_code
     return True
 
-
 def test_function(is_unique_funtion, tests):
     for string, answer in tests:
         assert answer == is_unique_funtion(string), f"Function {is_unique_funtion.__name__} failed at test {string}"
