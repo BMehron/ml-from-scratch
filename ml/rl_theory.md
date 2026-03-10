@@ -1,2 +1,0 @@
-The goal of this project is to learn RL and make a presentation in one week. I had some courses on RL but I forgot most of the things. I need to cover all these topics:
-model-based,policy-based,value-based, actor-critic as well basic terminolgy, on/off policy, DPO, PPO, GRPO. The end goal of this learning is to build AI mathematician. Please help me to learn this field step by step in a structured way and taking notes along the way for the final presentation. I have one week and full-time commitment. 

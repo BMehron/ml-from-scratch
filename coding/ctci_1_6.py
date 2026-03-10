@@ -35,6 +35,7 @@ def compress_string_a(string):
     curr_count = 0
     for i in range(len(string)):
         if i != 0 and string[i] != string[i-1]:
+            compressed_part
             compressed.append(f"{string[i-1]}{curr_count}")
             curr_count = 0
         curr_count += 1
