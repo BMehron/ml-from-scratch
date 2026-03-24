@@ -492,9 +492,6 @@ class MoE(nn.Module):
         return output
 
 
-
-
-
 if __name__ == "__main__":
     input = torch.tensor([[[1., 2], [4,5]]])
     layer_norm = LayerNorm(2)
