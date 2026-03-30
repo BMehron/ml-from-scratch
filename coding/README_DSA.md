@@ -4,57 +4,6 @@
 
 This document contains 20 programming exercises designed to practice core data structures and algorithmic patterns commonly used in technical interviews and real-world software development. Each problem focuses on arrays, strings, and basic data structures, while highlighting a specific algorithmic idea in the solution.
 
-### Hashmaps
-
-![HashMaps](images/hashmap.jpg)
-
-Hashmaps (dictionaries) provide average **O(1)** time complexity for insert and lookup operations. They are commonly used for frequency counting, caching, and fast membership checks.
-
-### Two Pointers
-
-![TwoPointers](images/two-pointers.png)
-
-The two-pointers technique uses two indices moving through a data structure (often an array or string) to reduce time complexity, typically from **O(n²)** to **O(n)**.
-
-### Sliding Window
-
-![TwoPointers](images/sliding-windows.png)
-
-The sliding window pattern maintains a dynamic range over a sequence, expanding and contracting the window to track optimal subarrays or substrings efficiently.
-
-### Binary Search
-
-![TwoPointers](images/binary-search.png)
-
-Binary search operates on sorted or monotonic search spaces, repeatedly halving the search interval to achieve **O(log n)** time complexity.
-
-### Breadth-First Search (BFS)
-
-![TwoPointers](images/bfs.png)
-
-BFS explores a graph or tree level by level using a queue. It is ideal for shortest-path problems in unweighted graphs and level-order traversals.
-
-### Depth-First Search (DFS)
-
-![TwoPointers](images/dfs.png)
-
-DFS explores as far as possible along a branch before backtracking. It is widely used for graph traversal, connected components, and recursive structure exploration.
-
-### Backtracking
-
-![TwoPointers](images/backtracking.png)
-
-Backtracking systematically explores all possible configurations by making choices, recursing, and undoing those choices when necessary.
-
-### Prefix Sum
-Prefix sums allow fast range queries by preprocessing cumulative sums, transforming repeated **O(n)** range queries into **O(1)** operations.
-
-### Heaps (Min/Max Heaps)
-
-![TwoPointers](images/min-heap.png)
-
-Heaps are priority queues that allow efficient access to minimum or maximum elements, typically with **O(log n)** insertion and removal.
-
 ---
 
 ## Exercises

@@ -271,6 +271,7 @@ class CustomWrapper:
     
     @torch.no_grad()
     def speculative_decoding(self, model_inputs):
+        ## WARNING SPECULATIVE DECODING IS NOT COMPLETE AND MIGHT BE WRONG
         B = model_inputs["input_ids"].shape[0]
         # Prefill: Draft model
         target_past_key_values = None
@@ -359,13 +360,14 @@ if __name__ == "__main__":
         {"role": "user", "content": "How to create a personal mission statement?"}
     ]
 
-    custom_api = CustomWrapper(model_id = "Qwen/Qwen2.5-0.5B-Instruct", max_completions_len=20, beam_size=2)
+    custom_api = CustomWrapper(model_id = "Qwen/Qwen2.5-0.5B-Instruct", max_completions_len=20, beam_size=2,
+                            speculative_model_id="Qwen/Qwen2.5-0.5B-Instruct")
 
     text = custom_api.tokenizer.apply_chat_template(messages, tokenize=False,
             add_generation_prompt=True)
     print(f"Input Prompt Text: \n{text}")
 
-    for algo in ["beam_search", "hf_greedy", "greedy_vanilla", "greedy_sampling", "topk_sampling", "topp_sampling"]:
+    for algo in ["hf_greedy", "greedy_vanilla", "greedy_sampling", "topk_sampling", "topp_sampling", "beam_search", "speculative_decoding"]:
         start_time = time.time()
         generated_text = custom_api.generate(prompt=text, algorithm=algo)
         print(f"=============Algorithm  {algo}  =========\n")

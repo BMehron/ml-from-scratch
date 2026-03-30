@@ -1,1 +1,0 @@
-Refresh Python Knowledge: https://www.w3schools.com/python/
