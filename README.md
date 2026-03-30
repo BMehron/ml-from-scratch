@@ -1,4 +1,4 @@
-# ML Interview Prep
+# ML Knowledge Refresher
 
 Personal study repository covering algorithms, ML foundations, and deep reinforcement learning. All code is written by me for learning, so it’s not always optimal or perfectly clean.
 
