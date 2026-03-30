@@ -35,7 +35,7 @@ class RMSNorm(nn.Module):
     Input: (B, L, D)
     Definition: output = input / sqrt(input ** 2 + eps).
     Why do wee need this?: In transformers often the main issue is controlling scale of activations not mean.
-    RMS simpler and cheaper. In practice often matches LayerNorm in practice
+    RMS simpler and cheaper. In practice often matches LayerNorm.
     
     RMSNorm normalizes a token’s hidden state by its root mean square, without subtracting the mean. 
     So compared to LayerNorm, it only rescales the vector instead of centering and rescaling it. 
@@ -368,14 +368,6 @@ class GQAAttention(nn.Module):
 
         # regroup query heads: (B, Hq, Lq, Dh) -> (B, Hk, G, Lq, Dh)
         Q = Q.view(B, self.k_heads, self.group_size, L_q, self.d_hidden)
-
-        # K_exp = K.unsqueeze(2)   # (B, Hk, 1, Lk, Dh)
-        # V_exp = V.unsqueeze(2)   # (B, Hk, 1, Lk, Dh)
-
-        # attn_score = Q @ K_exp.transpose(-2, -1) / (self.d_hidden ** 0.5)   # (B,Hk,G,Lq,Lk)
-        # attn_probs = torch.softmax(attn_score, dim=-1)
-        # output = attn_probs @ V_exp   # (B,Hk,G,Lq,Dh)
-
         # attention scores: (B, Hk, G, Lq, Lk)
         attn_score = torch.einsum("bhgld,bhmd->bhglm", Q, K) / (self.d_hidden ** 0.5)
 
